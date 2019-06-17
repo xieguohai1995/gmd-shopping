@@ -1,0 +1,15 @@
+server:
+  port: 9001
+
+spring:  application:    name: zuul
+  
+
+eureka:  client:    service-url:      defaultZone: http://localhost:9000/eureka/  #设置eureka Cliud(Provider)注册服务的url
+      
+zuul:  routes:    user:   #自定义模块的名称
+      service-id: user-provider  #用户服务的应用名称      path: /user/**                       #服务别名
+    goods:
+      service-id: goods-provider      path: /goods/**
+    orders:
+      service-id: orders-provider
+      path: /orders/**                      
